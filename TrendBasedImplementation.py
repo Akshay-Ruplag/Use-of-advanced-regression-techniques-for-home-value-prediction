@@ -242,5 +242,84 @@ frame=frame[['parcelid', 'airconditioningtypeid', 'architecturalstyletypeid',
        'hashottuborspa', 'taxdelinquencyflag',  'Month', 'Day',
        'TimeComponent','AreaRatio1','AreaRatio2','AreaRatio3','AreaRatio4','AreaRatio5','logerror']]
 frame=frame.fillna(-191)
+
+#---------------------------XGB model-------------------------------
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import Imputer
+from sklearn.metrics import mean_absolute_error
+import joblib
+import xgboost as xgb
+
+#train=pd.read_csv('')
+TrainSet=np.loadtxt('Trainset.csv',delimiter=',',skiprows=1)
+print(TrainSet.shape)
+features = TrainSet[:,1:99]
+labels = TrainSet[:,99]
+
+tr_features, ts_features, tr_labels, ts_labels = train_test_split(features,labels, test_size=0.30, random_state=42)
+
+imputer=Imputer(missing_values=-191,strategy='median')
+tr_features=imputer.fit_transform(tr_features)
+ts_features=imputer.transform(ts_features)
+
+data=xgb.DMatrix(data=tr_features,label=tr_labels)
+test=xgb.DMatrix(data=ts_features)
+
+eval_set=xgb.DMatrix(ts_features,ts_labels)
+
+params={'booster':'gbtree','eta':0.1,'seed':0,'subsample':0.8,'colsample_bytree':0.8,'objective':'reg:linear','max_depth':3,'min_child_weight':2,'silent':1,'eval_metric':'mae','verbose':True,'gamma':0}
+bst=xgb.train(params,data,num_boost_round=7000,evals=[(eval_set,'eval')],early_stopping_rounds=10)
+
+y_pred=bst.predict(test)
+
+res=xgb.cv(params = params, dtrain = data, num_boost_round = 7000, nfold = 10, metrics = ['mae'],early_stopping_rounds = 10)
+
+print (res)
+
+print (mean_absolute_error(ts_labels,y_pred))
+joblib.dump(bst, "xgboost.joblib.dat")
+#--------------------------catboost Regressor---------------------------------------
+import joblib
+import pandas as pd
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import train_test_split
+import numpy as np
+from sklearn.preprocessing import Imputer
+import matplotlib.pyplot as plt
+
+
+TrainSet=np.loadtxt('Trainset.csv',delimiter=',',skiprows=1)
+
+features = TrainSet[:,1:99]
+labels = TrainSet[:,99]
+
+
+tr_features, ts_features, tr_labels, ts_labels = train_test_split(features,labels, test_size=0.30, random_state=42)
+
+from catboost import Pool, CatBoostRegressor
+import catboost as cb
+
+imputer=Imputer(missing_values=-191,strategy='most_frequent')
+tr_features=imputer.fit_transform(tr_features)
+ts_features=imputer.transform(ts_features)
+pool=Pool(data=tr_features,label=tr_labels)
+print (ts_features.shape)
+
+# specify the training parameters
+model = CatBoostRegressor(iterations=250, depth=6, learning_rate=0.01, loss_function='MAE',eval_metric='MAE',od_type="Iter",od_wait=10)
+#train the model
+eval_set=(ts_features,ts_labels)
+model.fit(tr_features,tr_labels,use_best_model=True,eval_set=eval_set)
+#model.get_feature_importance(tr_features,tr_labels)
+#plt.show()
+params={'iterations':250,'depth':6,'learning_rate':0.01,'eval_metric':'MAE'}
+res=cb.cv(params=params,pool=pool,fold_count=5,inverted=False,partition_random_seed=0,shuffle=True)
+print (res)
+# make the prediction using the resulting model
+preds = model.predict(ts_features)
+#print(preds)
+print (model.get_params())
+print (mean_absolute_error(ts_labels,preds))
+model.save_model("model")
 print("shape",frame.shape)
 frame.to_csv('Trainset.csv',index=False)
