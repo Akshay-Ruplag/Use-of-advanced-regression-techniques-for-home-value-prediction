@@ -6,7 +6,6 @@ The problem was to create a machine learning model using regression techniques t
 
 The implementation was done in two methods.As a time series forecasting and a constant trend based method.All the implementations can be found above.
 
-
 The project was executed along the following phases:
 
 * Data analysis and visualization
