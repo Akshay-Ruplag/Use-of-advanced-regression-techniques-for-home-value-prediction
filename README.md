@@ -4,6 +4,9 @@ This is regarding a kaggle competition which goes under the name Zillow Prize: Z
 
 The problem was to create a machine learning model using regression techniques to determine the error of properties in future periods in time.To be specific we had to predict Oct 16,Nov 16,Dec 16,Oct 17,Nov 17,Dec 17.
 
+The implementation was done in two methods.As a time series forecasting and a constant trend based method.All the implementations can be found above.
+
+
 The project was executed along the following phases:
 
 * Data analysis and visualization
