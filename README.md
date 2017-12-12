@@ -39,7 +39,9 @@ In terms of parameter tuning neural network hyper parameters as well as tree par
 References:
 
 https://www.kaggle.com/c/zillow-prize-1
+
 https://docs.google.com/a/wso2.com/document/d/1aV6lEkSBcXAW4G1Xyj5lcNbQBqBGzHae04ev4IVE75U/edit?usp=sharing
+
 https://www.kaggle.com/tharindraparanagama/eda-py
 
 
