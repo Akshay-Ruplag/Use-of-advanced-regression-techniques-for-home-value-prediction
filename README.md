@@ -13,30 +13,30 @@ The project was executed along the following phases:
 * Feature engineering
 * Model building and parameter tuning
 
-Data analysis and visualization
+##Data analysis and visualization
 
 Under this phase we analyzed the datatypes of the dataset,missing values in the dataset,categorical values in the dataset,statistical parameters relating to the dataset(mean ,median,standard deviation,1st quartile,3rd quartile).further we had to identify which variables can be taken as features and what should be the target variable.
 
 Next in the visualization part we looked at the distribution of each variable in the dataset.Both the features and targets separately.we also analysed how the target variable changed with each feature.Performing clustering was also a done to gather insights from data.Finally the use of boxplots to identify outliers were plotted.
 
-Data pre-processing
+##Data pre-processing
 
 In this phase we performed various preprocessing.Such as data standardization(scaling data to be part of a gaussian distribution with a mean of zero and a standard deviation of one),Imputing missing values(replacing missing values in each column by the mean,meadian and standard deviation of values in that column) and handling categorical values(replacing each category by the mean of targets values for each category,Label encoding,frequency based class assigning,clustering based label assigning and performing one-hot encoding on those labels).
 
-Feature Engineering
+##Feature Engineering
 
 Here we mainly create new features with the use of existing features to uncover hidden predictive inferences in data.This makes the model more powerful.Features were engineered by multiplying ,dividing ,adding and subtracting selected existing features.such engineered features are as follows.
  
 The complete list of engineered features can be found above under the following file name "FeaturesEngineered.txt".
 
-Model Building and parameter tuning
+##Model Building and parameter tuning
 
 We used few techniques to deal with this problem.Those were Neural networks and ensembling techniques(bagging,boosting and stacking).For bagging we used random forest algorithm,for boosting we used xgboost and catboost.for stacking we used the two boosting implemantations as base learners and a decision tree regressor as the meta learner.The neural network was a multi-layer perceptron.
 Stacking performed very well while results from catboost were also promising.The other implementations gave acceptable results.but not thesignificant improvements to the evaluation metric.
 
 In terms of parameter tuning neural network hyper parameters as well as tree parameters for other implementations were configured to give decent results. 
 
-References:
+###References:
 
 https://www.kaggle.com/c/zillow-prize-1
 
