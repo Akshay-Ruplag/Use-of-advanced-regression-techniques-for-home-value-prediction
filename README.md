@@ -38,30 +38,37 @@ In terms of parameter tuning neural network hyper parameters as well as tree par
 
 Technology Used
 
-*Keras-Implementing neural network
-*CatBoost-Implementing boosting trees
-*XGBoost-Implementing boosting trees
-*Pandas-Data manipulation
-*Numpy-data handling
-*Sklearn-Building machine learning models
-*matplotlib-Plotting results
-*joblib-Saving models
+* Keras-Implementing neural network
+
+* CatBoost-Implementing boosting trees
+
+* XGBoost-Implementing boosting trees
+
+* Pandas-Data manipulation
+
+* Numpy-data handling
+
+* Sklearn-Building machine learning models
+
+* matplotlib-Plotting results
+
+* joblib-Saving models
 
 
 _File instruction_:
 
-EngineeredFeatures.txt-This file holds the engineered features we used.
+**EngineeredFeatures.txt**-This file holds the engineered features we used.
 NeuralNetImplementation.py-This script has the neural network implementation constructed using Keras.
 
-RandomForestImplementation.py-This script holds the implementation of the bagging technique.
+**RandomForestImplementation.py**-This script holds the implementation of the bagging technique.
 
-ReadMe.md-contains description of the project execution and file contents.
+**ReadMe.md**-contains description of the project execution and file contents.
 
-Stacking.py-Stacking technique implementation
+**Stacking.py**-Stacking technique implementation
 
-Time-SeriesForcatingImplementation.py-This is the implementation done considering the the problem to be a time series modelling.
+**Time-SeriesForcatingImplementation.py**-This is the implementation done considering the the problem to be a time series modelling.
 
-TrendBasedImplementation.py-This is where the problem was considered to be a a repetition of previous months values.
+**TrendBasedImplementation.py**-This is where the problem was considered to be a a repetition of previous months values.
 
 
 
