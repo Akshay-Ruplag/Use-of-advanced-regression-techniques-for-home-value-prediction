@@ -72,7 +72,6 @@ NeuralNetImplementation.py-This script has the neural network implementation con
 
 **Prediction(Time-SeriesMethod).py**-This script contains the implemantation to make predictions based on the time-series analysis method.
 
-
 ### References:
 
 https://www.kaggle.com/c/zillow-prize-1
