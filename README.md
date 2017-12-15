@@ -70,8 +70,7 @@ NeuralNetImplementation.py-This script has the neural network implementation con
 
 **TrendBasedImplementation.py**-This is where the problem was considered to be a a repetition of previous months values.
 
-
-
+**Prediction(Time-SeriesMethod).py**-This script contains the implemantation to make predictions based on the time-series analysis method.
 
 
 ### References:
